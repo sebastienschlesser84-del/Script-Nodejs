@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configuration globale du thème Broadcast */
+@layer base {
+  body {
+    @apply bg-[#0f1115] text-white antialiased overflow-hidden;
+    /* Empêche le rebond du scroll sur macOS */
+    overscroll-behavior: none;
+  }
+
+  /* Typographie pour les Timecodes (SMPTE) */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Scrollbars personnalisées (Style MCR) */
+@layer components {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2e37 #0f1115;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #0f1115;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #2a2e37;
+    border-radius: 20px;
+    border: 1px solid #0f1115;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #3b414d;
+  }
+}
+
+/* Animations de statut Broadcast */
+@keyframes tally-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-tally-red {
+  animation: tally-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Utilitaires pour le layout */
+.viewport-height {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Styles pour les inputs de l'inspecteur */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
